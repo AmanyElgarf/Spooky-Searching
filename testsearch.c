@@ -28,7 +28,7 @@ void  randamize_list(int* pList, int size, int percentage)
 	int idx1, idx2;
 	int value;
 	printf("randomizing %d numbers using %d pairs\n", size, numPairs);
-    srand(time(NULL));
+        srand(time(NULL)); //randomizes with time that way no value is repeated
 	for (i = 0; i < numPairs; i++) {
 		idx1 = rand() % size;
 		idx2 = rand() % size;
@@ -41,6 +41,7 @@ void  randamize_list(int* pList, int size, int percentage)
 
 int swap_items(int* pList, int size, int index)
 {
+	//swaps two randomly generated indexes
 	int value = -1;
 	int pos = rand() % size;
 	value = pList[index];
@@ -59,6 +60,7 @@ void destry_list(int** ppList)
 
 typedef struct
 {
+//	variable for each thread
     int    *pList;
     int    value;
     int    start;
@@ -68,20 +70,21 @@ typedef struct
 
 void * search(void *pData)
 {   int i;
-    int *pRet = (int *)malloc(sizeof(int));
+    int *pRet = (int *)malloc(sizeof(int)); //pointer to index of found element
     *pRet = -1;
+    //pointer to iterate through list
     search_data *pSd = ( search_data *)pData;
-//    printf("search: value=%d, start=%d, size=%d, ptr=0x%p, tid=0x%x\n", pSd->value, pSd->start, pSd->size, pSd->pList, pthread_self());
     printf("search: value=%d, start=%d, size=%d, ptr=0x%p\n", pSd->value, pSd->start, pSd->size, pSd->pList);
-    for (i = pSd->start; i < pSd->size + pSd->start; i++) {
+   
+ for (i = pSd->start; i < pSd->size + pSd->start; i++) { //depending on thread #, bounds set
         if (pSd->pList[i] == pSd->value) {
-            //printf("search: foud %d at %d, tid=0x%x\n", pSd->value, i, pthread_self());
+            //	printf("search: foud %d at %d, tid=0x%x\n", pSd->value, i, pthread_self());
             printf("search: foud %d at %d\n", pSd->value, i);
             *pRet = i;
             break;
         }
     }
-    //return (void *)pRet;
+    //	return (void *)pRet;
     pthread_exit((void *)pRet);
 }
 
@@ -94,20 +97,23 @@ int main()
     int i;
 	int* pList = NULL;
 	int size = MAX_NUMBERS;
+	//	size of list 
 	struct timespec tp1, tp2;
 	int listsize = create_list(&pList, size);
 	if ((pList) && (listsize == size)) {
 		randamize_list(pList, size, 75);
         pthread_t srthreads[MAX_THREADS];
         int *pstatus[MAX_THREADS];
-        int numThreads = MAX_NUMBERS/MAX_NUMBERS_PER_THREAD;
+        int numThreads = MAX_NUMBERS/MAX_NUMBERS_PER_THREAD; //	 num of threads determined by ratio between size of list and how many #s you want per list
         pthread_attr_t attr;
         pthread_attr_init(&attr);
         pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
         //search_data pSd;
         search_data *pSd = malloc(numThreads * sizeof(search_data));
-        int result = clock_gettime(CLOCK_REALTIME, &tp1);
-        for(i=0; i<numThreads; i++)
+      
+	int result = clock_gettime(CLOCK_REALTIME, &tp1);
+        
+	for(i=0; i<numThreads; i++)
         {
             pSd[i].value = 276;
             pSd[i].size = MAX_NUMBERS_PER_THREAD;
