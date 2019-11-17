@@ -1,0 +1,20 @@
+testplan.txt
+
+Testcases:
+
+Test to see whether process or thread will run faster for:
+	1) list of 250 elements 
+		a. split into lists of size 5
+		b. split into lists of size 10
+		c. split into lists of size 25
+		d. use a single process/thread
+	2) list of 5000 elements
+		a. split into lists of size 10
+		b. split into lists of size 250
+		c. split into lists of size 1000
+		d. use a single process/thread
+	3) list of 20000 elements 
+		a. split into lists of size 10
+		b. split into lists of size 1000
+		c. split into lists of size 20000
+		d. a single process/thread  
