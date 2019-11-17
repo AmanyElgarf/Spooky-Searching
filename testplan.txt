@@ -17,4 +17,4 @@ Test to see whether process or thread will run faster for:
 		a. split into lists of size 10
 		b. split into lists of size 1000
 		c. split into lists of size 20000
-		d. a single process/thread  
+		d. use a single process/thread  
