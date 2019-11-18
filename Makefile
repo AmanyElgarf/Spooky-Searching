@@ -15,4 +15,4 @@ main: multitest_proc.c main.c
 	$(CC) $(CFLAGS) -o main main.c multitest_proc.o multitest_thread.o
 
 clean: 
-    -rm *.o main multitest_proc.o multitest_thread.o
+    	-rm *.o main multitest_proc.o multitest_thread.o
