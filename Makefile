@@ -1,7 +1,6 @@
 CC = gcc 
 CFLAGS = -g 
 
-all: main clean
 
 multitest_proc: multitest_proc.c
 	$(CC) $(CFLAGS) -o mm multitest_proc.c
