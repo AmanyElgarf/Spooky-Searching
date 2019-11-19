@@ -18,3 +18,12 @@ Test to see whether process or thread will run faster for:
 		b. split into lists of size 1000
 		c. split into lists of size 20000
 		d. use a single process/thread  
+		
+Testing 1a-1c to see how creating more processes and threads will affect the time to find the target value in a small list of numbers (250 elements)
+
+Testing 2a-2c to see how a medium size list broken up into 500, 20 and 5 threads/processes can result in either a faster search for threads or processes
+
+Testing 3a-3c to see whether threads or processes will be faster in iterating through a large list of numbers broken up into 2000, 20, or 10 processes/threads
+
+Testing 1d,2d,3d to compare how long it takes a single process/thread to iterate through different lengths of lists in search for a target value
+
