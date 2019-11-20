@@ -12,9 +12,9 @@ Test plan:
 TEST(1) is used to to compare how long it takes a single process/thread to iterate through different lengths of lists in search for a target value. In other words, It is used to measure how time increases as we increase the size of the list per process/thread. It is also used to determine whether process or thead is faster when both run on a list of the same size.
 	
 2) TEST(2) list of 250 elements 
-	a. split into lists of size 5
+	a. split into lists of size 25
 	b. split into lists of size 10
-	c. split into lists of size 25
+	c. split into lists of size 5
 TEST(2) is used to see how creating more processes and threads will affect the time to find the target value in a small list of numbers (250 elements)
 		
 3) TEST(3) list of 5000 elements
