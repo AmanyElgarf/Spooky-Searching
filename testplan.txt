@@ -1,29 +1,45 @@
-testplan.txt
+Test plan:
 
-Testcases:
-
-Test to see whether process or thread will run faster for:
-	1) list of 250 elements 
-		a. split into lists of size 5
-		b. split into lists of size 10
-		c. split into lists of size 25
-		d. use a single process/thread
-	2) list of 5000 elements
-		a. split into lists of size 10
-		b. split into lists of size 250
-		c. split into lists of size 1000
-		d. use a single process/thread
-	3) list of 20000 elements 
-		a. split into lists of size 10
-		b. split into lists of size 1000
-		c. split into lists of size 20000
-		d. use a single process/thread  
+1) TEST(1) use a single process/thread
+	a. list of 10
+	b. list of 50
+	c. list of 250
+	d. list of 500
+	e. list of 1000
+	f. list of 5000
+	g. list of 10000
+	h. list of 20000
+TEST(1) is used to to compare how long it takes a single process/thread to iterate through different lengths of lists in search for a target value. In other words, It is used to measure how time increases as we increase the size of the list per process/thread. It is also used to determine whether process or thead is faster when both run on a list of the same size.
+	
+2) TEST(2) list of 250 elements 
+	a. split into lists of size 5
+	b. split into lists of size 10
+	c. split into lists of size 25
+TEST(2) is used to see how creating more processes and threads will affect the time to find the target value in a small list of numbers (250 elements)
 		
-Testing 1a-1c to see how creating more processes and threads will affect the time to find the target value in a small list of numbers (250 elements)
+3) TEST(3) list of 5000 elements
+	a. split into lists of size 1000
+	b. split into lists of size 500
+	c. split into lists of size 250
+	d. split into lists of size 10
+TEST(3) is used to see how creating more processes and threads will affect the time to find the target value in a medium list of numbers (5000 elements)
 
-Testing 2a-2c to see how a medium size list broken up into 500, 20 and 5 threads/processes can result in either a faster search for threads or processes
+4) TEST(4) list of 10000 elements
+	a. split into lists of size 2000
+	b. split into lists of size 1000
+	c. split into lists of size 500
+	d. split into lists of size 250
+	e. split into lists of size 10
+TEST(4) is used to see how creating more processes and threads will affect the time to find the target value in a large list of numbers (10000 elements)
+		
+5) TEST(5) list of 20000 elements 
+	a. split into lists of size 50000
+	b. split into lists of size 20000
+	c. split into lists of size 1000
+	d. split into lists of size 500
+	e. split into lists of size 10
+TEST(5) is used to see whether threads or processes will be faster in iterating through a very large list of numbers broken up into 50000, 2000, 1000, 500 or 10 processes/threads
 
-Testing 3a-3c to see whether threads or processes will be faster in iterating through a large list of numbers broken up into 2000, 20, or 10 processes/threads
 
-Testing 1d,2d,3d to compare how long it takes a single process/thread to iterate through different lengths of lists in search for a target value
+
 
