@@ -29,16 +29,16 @@ TEST(3) is used to see how creating more processes and threads will affect the t
 	b. split into lists of size 1000
 	c. split into lists of size 500
 	d. split into lists of size 250
-	e. split into lists of size 10
+	e. split into lists of size 100
 TEST(4) is used to see how creating more processes and threads will affect the time to find the target value in a large list of numbers (10000 elements)
 		
 5) TEST(5) list of 20000 elements 
-	a. split into lists of size 50000
-	b. split into lists of size 20000
+	a. split into lists of size 5000
+	b. split into lists of size 2000
 	c. split into lists of size 1000
 	d. split into lists of size 500
-	e. split into lists of size 10
-TEST(5) is used to see whether threads or processes will be faster in iterating through a very large list of numbers broken up into 50000, 2000, 1000, 500 or 10 processes/threads
+	e. split into lists of size 100
+TEST(5) is used to see whether threads or processes will be faster in iterating through a very large list of numbers broken up into 50000, 2000, 1000, 500 or 100 processes/threads
 
 
 
