@@ -1,45 +1,82 @@
-Test plan:
+Team members:
+Amany Elgarf     aie11
+Elaina Heraty    emh188
+                                                    TEST PLAN
 
-1) TEST(1) use a single process/thread
-	a. list of 10
-	b. list of 50
-	c. list of 250
-	d. list of 500
-	e. list of 1000
-	f. list of 5000
-	g. list of 10000
-	h. list of 20000
-TEST(1) is used to to compare how long it takes a single process/thread to iterate through different lengths of lists in search for a target value. In other words, It is used to measure how time increases as we increase the size of the list per process/thread. It is also used to determine whether process or thead is faster when both run on a list of the same size.
-	
-2) TEST(2) list of 250 elements 
-	a. split into lists of size 25
-	b. split into lists of size 10
-	c. split into lists of size 5
-TEST(2) is used to see how creating more processes and threads will affect the time to find the target value in a small list of numbers (250 elements)
-		
-3) TEST(3) list of 5000 elements
-	a. split into lists of size 1000
-	b. split into lists of size 500
-	c. split into lists of size 250
-	d. split into lists of size 10
-TEST(3) is used to see how creating more processes and threads will affect the time to find the target value in a medium list of numbers (5000 elements)
+GROUP(1) 
+Group(1) consists of 10 tests to come up with a relation between the number of elements per process/thread and time excluding the process/thread switching time.
 
-4) TEST(4) list of 10000 elements
-	a. split into lists of size 2000
-	b. split into lists of size 1000
-	c. split into lists of size 500
-	d. split into lists of size 250
-	e. split into lists of size 100
-TEST(4) is used to see how creating more processes and threads will affect the time to find the target value in a large list of numbers (10000 elements)
-		
-5) TEST(5) list of 20000 elements 
-	a. split into lists of size 5000
-	b. split into lists of size 2000
-	c. split into lists of size 1000
-	d. split into lists of size 500
-	e. split into lists of size 100
-TEST(5) is used to see whether threads or processes will be faster in iterating through a very large list of numbers broken up into 50000, 2000, 1000, 500 or 100 processes/threads
+We will run 10 different tests using only one process/thread with changing the number of elements per process/thread. This test intends to eliminate the effect of switching and measure the time in terms of increasing the number of elements per process. We will increase the number of processes/threads gradually to notice how the time increases/changes with increasing the number of elements per process/thread. We expect the result of this test to be linear or linear since there is no switching between processes/threads.
+
+test1a:  →  one process/thread with 5   elements per thread/process
+test1b:  →   one process/thread with 10  elements per thread/process
+test1c:  →   one process/thread with 20  elements per thread/process
+test1d:  →   one process/thread with 50  elements per thread/process
+test1e:  →   one process/thread with 70  elements per thread/process
+test1f:  →   one process/thread with 100 elements per thread/process
+test1g: →  one process/thread with 150 elements per thread/process
+test1h: →   one process/thread with 170 elements per thread/process
+test1i:  →   one process/thread with 200 elements per thread/process
+test1j:  →   one process/thread with 250 elements per thread/process
+
+------------------------------------------------------------------------------------------------------------------------------
+
+GROUP(2)
+group(2) consists of 10 tests to come up with a relation between the number of processes/threads(including switching time)) and time.
+
+We will run 10 different tests fixing the number of elements per process/thread to be 250 with increasing the number of processes/threads gradually. This test intends to measure how time changes in response to increasing the number of threads/processes including the effect of switching time. After running these 10 tests, we expect the time to change geometrically and not linear like the previous group of tests. This is mainly because of the time the processes/threads take to switch between each other.
+
+test2a:  → 1 processes/threads
+test2b:  → 2 processes/threads
+test2c:  → 3 processes/threads
+test2d:  → 4 processes/threads
+test2e:  → 5 processes/threads
+test2f:  → 30 processes/threads
+test2g:  → 50 processes/threads
+test2h:  → 70 processes/threads
+Test2i:  → 100 processes/threads
+test2j:  → 150 processes/threads
+
+------------------------------------------------------------------------------------------------------------------------------
+
+GROUP(3)
+Group(3) consists of 19 tests to come up with a relation between number of processes and number of threads. This group of tests is also intended to be used in figuring out the tradeoff point for processes and threads. We will fix the number of elements per process/thread to be 250 elements and increase the number of threads and processes up to 150. After running the tests with various sizes for processes and threads, we will construct a relation between the number of threads that should take the same time as the number of processes. The difference between this group of tests and the previous one is the range that we extend the number of threads/processes to. Since processes in general are slower than threads, we extended the range up to 150 processes/threads to be able to match threads up with processes.
+
+test3a:  → 1 processes/threads
+test3b: → 2 processes/threads
+test3c:  → 3 processes/threads
+test3d:  → 4 processes/threads
+test3e:  → 5 processes/threads
+test3f:  → 6 processes/threads
+test3g:  → 7 processes/threads
+test3h:  → 8 processes/threads
+test3i:  → 9 processes/threads
+test3j:  → 10 processes/threads
+test3k:  → 15 processes/threads
+test3l:  → 20 processes/threads
+test3m: → 25 processes/threads
+test3n: → 30 processes/threads
+test3o: → 35 processes/threads
+test3p: → 40 processes/threads
+test3q:  → 45 processes/threads
+test3r:  → 50 processes/threads
+test3s:  → 150 processes/threads
+
+------------------------------------------------------------------------------------------------------------------------------
+
+GROUP(4)
+
+Group(4) consists of 10 tests to discover the tradeoff point for parallelism. In other words, at what point is it useless/harmful to add more processes/threads. For this purpose, we decided to design ten test where we fix the size of the array to be 250 and gradually increase the number of threads/processes to search the entire array. We expect that that the time will initially slightly increase and then decrease as we decrease the number of elements per process/thread but then dramatically increase again when the number of processes/threads become large enough that that the switching time alternates the graph. This is where we expect the tradeoff point to be.
 
 
-
+test4a:  → 1   process/thread on a 250 size array
+test4b:  → 2   process/thread on a 250 size array
+test4c:  → 3  process/thread on a 250 size array
+test4d:  → 5  process/thread on a 250 size array
+test4e:  → 10  process/thread on a 250 size array
+test4f:   → 20  process/thread on a 250 size array
+test4g:  → 30  process/thread on a 250 size array
+test4h:  → 40  process/thread on a 250 size array
+test4i:   → 50  process/thread on a 250 size array
+test4j:   → 250  process/thread on a 250 size array
 
